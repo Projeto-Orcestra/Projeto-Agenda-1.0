@@ -1,0 +1,19 @@
+{
+  "name": "agenda-back",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Projeto-Orcestra/Projeto-Agenda-1.0.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Projeto-Orcestra/Projeto-Agenda-1.0/issues"
+  },
+  "homepage": "https://github.com/Projeto-Orcestra/Projeto-Agenda-1.0#readme"
+}
