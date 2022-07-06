@@ -2,7 +2,7 @@ import jwt from "jsonwebtoken"
 import config from "config"
 
 export default function (req, res, next) {
-    const token = req.header("x-auth-token")
+    const token = req.header("auth-token")
     if (!token)
         return res.status(401).json("Acesso negado. Token não fornecido.")
 
