@@ -1,10 +1,10 @@
-import logo from './logo.svg';
 import './App.css';
+import LoginCadastro from './pages/LoginCadastro';
+
 
 function App() {
   return (
-   <>
-   </>
+    <LoginCadastro/>
   );
 }
 
