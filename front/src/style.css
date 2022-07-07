@@ -101,6 +101,10 @@ header{
     cursor: pointer;
 }
 
+.estiloBotao {
+    justify-self: flex-end;
+}
+
 a {
     color: unset;
     text-decoration: none;
