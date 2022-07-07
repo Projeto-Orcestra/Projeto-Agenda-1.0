@@ -11,7 +11,7 @@ export default function Cadastro(props) {
         <div className='box1'>
           <span>Crie uma conta agora!</span>
           <span>Já possui uma conta?</span>
-          <button className='botaoPreto' onClick={props.goToLogin}>Login</button>
+          <button className='botaoPreto estiloBotao' onClick={props.goToLogin}>Login</button>
         </div>
         <div className='box2'>
           <span>Crie sua conta</span>
