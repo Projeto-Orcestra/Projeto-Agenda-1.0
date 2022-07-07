@@ -3,6 +3,7 @@ import cors from "cors"
 import mongo from "mongoose"
 import config from "config"
 import { userRoute } from "./routes/userRoute"
+import { contatoRoute } from "./routes/contactRoute"
 
 mongo
     .connect(config.get("DATABASE_URL"))
@@ -19,6 +20,7 @@ app.use(cors())
 app.use(express.json())
 
 app.use("/user", userRoute)
+app.use("/contato", contatoRoute)
 
 const port = process.env.PORT || 9000
 
