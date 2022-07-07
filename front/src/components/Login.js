@@ -1,35 +1,29 @@
 import React from 'react'
+import '../style.css';
 
 export default function Login(props) {
   return (
     <div className='container'>
-      <div className='container-sign-up'>
-        <h1 className='title'>Agenda</h1>
-        <div className='box-one-sign-up'>
-          <span>Crie uma conta agora!</span>
-          <span>Já tem uma conta?</span>
-          <button className='sign-in-button' onClick={props.goToSingup}>Cadastro</button>
+      <header>
+         Agenda
+      </header>
+      <div className='containerLogin'>
+        <div className='box1'>
+          <span className="subtitulo">Bem Vindo de Volta!</span> <br/> <br/> <br/> <br/> <br/> <br/>
+          <span>Ainda não tem uma conta?</span>
+          <button className='botaoPreto' onClick={props.goToSingup}>Cadastrar</button>
         </div>
-        <div className='box-two-sign-up'>
-          <span>Crie sua conta</span>
-          <form className='sign-up-form'>
-            <div className='wrap-input'>
-              <input type='nome'></input>
-            </div>
+        <div className='box2'>
+        <span>Entrar na Conta</span>
+          <form> 
+            <input className='email' type="text" placeholder='E-mail'></input> <br/> <br/>
+            <input className='senha' type="password" placeholder='Senha'></input>
           </form>
-          <form className='sign-up-form'>
-            <div className='wrap-input'>
-              <input type='email'></input>
-            </div>
-          </form>
-          <form>
-            <input type='password'></input>
-          </form>
-          <div className='container-sign-up-form-button'>
-            <button className='sign-up-form-button'>Login</button>
-          </div>
+
+          <a href='/'>Esqueceu sua senha?</a>
+          <button className='botaoBranco'>Entrar</button>
         </div>
       </div>
-   </div>
-  )
+    </div>
+  ) 
 }

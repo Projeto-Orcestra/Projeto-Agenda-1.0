@@ -5,7 +5,7 @@ import Cadastro from '../components/Cadastro'
 export default function LoginCadastro() {
   const [isLogin, setIsLogin] = useState(true)
   return (
-    <div className="page-container">
+    <div>
         {isLogin ? (
             <Login goToSingup={() => setIsLogin(false)} />
         ) : (

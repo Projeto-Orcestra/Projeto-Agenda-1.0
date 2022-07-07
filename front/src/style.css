@@ -1,10 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;400&display=swap');
 * {
+    font-family: "inter", sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    overflow: hidden;
+    
 }
 
 .container {
     width: 100%;
     margin: 0 auto;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url('http://cdn10.overnature.net/1920/670-a-floresta-verde-bonito.jpg');
+    background-repeat:no-repeat;
+    background-size: cover;
+    
+}
+
+header{
+    color: white;
+    font-size: 50px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.containerLogin, .containerCadastro {
+    display: flex;
+}
+
+.box1 {
+    width: 300px;
+    height: 500px;
+    border: solid black 1px;
+    border-radius: 16px 0 0 16px;
+    background-color: black;
+    color: white;
+}
+
+.box2 {
+    width: 500px;
+    height: 500px;
+    border: solid black 1px;
+    border-radius: 0 16px 16px 0;
+    background-color: white;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.subtitulo {
+    font-family:'Inter', sans-serif;
+    font-size: 32px;
+    font-weight: 400;
+    margin: 50px;
+}
+
+.botaoBranco {
+    width: 202px;
+    height: 87px;
+    font-size: 24px;
+    border: solid black 5px;
+    border-radius: 60px;
+}
+.botaoBranco:hover {
+    opacity: .6;
+    cursor: pointer;
+}
+
+.email, .senha, .nome{
+    width: 300px;
+    height: 60px;
+    background-color: #CCCCCC;
+    border: none;
+    border-radius: 16px;
+}
+
+.botaoPreto{
+    width: 202px;
+    height: 87px;
+    border: solid white 5px;
+    border-radius: 60px;
+    color: white;
+    background-color: black;
+    font-size: 24px;
+}
+
+.botaoPreto:hover {
+    opacity: .6;
+    cursor: pointer;
+}
+
+a {
+    color: unset;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+    cursor: pointer;
 }
