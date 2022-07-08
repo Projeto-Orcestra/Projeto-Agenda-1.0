@@ -38,13 +38,27 @@ header{
     display: flex;
     flex-direction: column;
     gap: 20px;
-    justify-content: center;
+    justify-content:space-between;
+    text-align: center;
+
     width: 300px;
     height: 500px;
     border: solid black 1px;
     border-radius: 16px 0 0 16px;
     background-color: black;
     color: white;
+}
+
+.borda-titulo-Cadastro{
+    margin-left: 36px;
+    margin-right: 58px;
+    margin-top: 90px;
+    text-align: left;
+    font-size: 1.10rem;
+}
+
+.borda-baixo-Cadastro{
+    margin-bottom: 50px;
 }
 
 .box2 {
@@ -99,10 +113,6 @@ header{
 .botaoPreto:hover {
     opacity: .6;
     cursor: pointer;
-}
-
-.estiloBotao {
-    justify-self: flex-end;
 }
 
 a {

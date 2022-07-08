@@ -9,9 +9,13 @@ export default function Cadastro(props) {
       </header>
       <div className='containerCadastro'>
         <div className='box1'>
-          <span>Crie uma conta agora!</span>
-          <span>Já possui uma conta?</span>
-          <button className='botaoPreto estiloBotao' onClick={props.goToLogin}>Login</button>
+          <div className='borda-titulo-Cadastro'>
+            <h2>Crie uma conta agora!</h2>
+          </div>
+          <div div className='borda-baixo-Cadastro'>
+            <p>Já possui uma conta?</p>
+            <button className='botaoPreto estiloBotao' onClick={props.goToLogin}>Login</button>
+          </div>
         </div>
         <div className='box2'>
           <span>Crie sua conta</span>
