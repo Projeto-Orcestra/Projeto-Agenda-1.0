@@ -1,8 +1,12 @@
-import {Router} from 'express'
-import { ContactController, ContactController } from '../controllers/contactController'
+const { Router } = require("express")
+const { ContactController } = require("../controllers/contactController")
 
-export const contatoRoute = Router()
+const contatoRoute = Router()
 
 const contactController = new ContactController()
 
 contatoRoute.post("/criar", contactController.criarContato)
+
+module.exports = {
+    contatoRoute,
+}

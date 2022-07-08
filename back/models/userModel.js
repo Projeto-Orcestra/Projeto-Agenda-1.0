@@ -1,9 +1,9 @@
-import { Schema, model } from "mongoose"
-import jwt from "jsonwebtoken"
-import config from "config"
+const { Schema, model } = require("mongoose")
+const jwt = require("jsonwebtoken")
+const config = require("config")
 
-export const userSchema = new Schema({
-    name: { type: String, required: true, minlength: 5 },
+const userSchema = new Schema({
+    nome: { type: String, required: true, minlength: 5 },
     email: { type: String, required: true, unique: true },
     senha: { type: String, required: true, minlength: 5 },
 })
@@ -19,4 +19,9 @@ userSchema.methods.gerarAuthToken = function () {
     return token
 }
 
-export const User = model("user", userSchema)
+const User = model("user", userSchema)
+
+module.exports = {
+    userSchema,
+    User,
+}

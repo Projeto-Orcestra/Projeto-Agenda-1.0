@@ -1,10 +1,14 @@
-import { Router } from "express"
-import { UserController } from "../controllers/userController"
+const { Router } = require("express")
+const { UserController } = require("../controllers/userController")
 
-export const userRoute = Router()
+const userRoute = Router()
 
 const userController = new UserController()
 
 userRoute.post("/registrar", userController.criarUser)
 
 userRoute.post("/auth", userController.authUser)
+
+module.exports = {
+    userRoute,
+}

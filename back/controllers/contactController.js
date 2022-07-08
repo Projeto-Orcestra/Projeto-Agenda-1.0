@@ -1,7 +1,7 @@
-import Joi from "joi"
-import { criarContatoDB } from "../services/contactService"
+const Joi = require("joi")
+const { criarContatoDB } = require("../services/contactService")
 
-export class ContactController {
+class ContactController {
     validarContato = (contato) => {
         const schema = Joi.object({
             nome: Joi.string().required().min(5),
@@ -12,12 +12,20 @@ export class ContactController {
         return schema.validate(contato)
     }
 
-    
     criarContato = async (req, res) => {
         const { error } = this.validarContato(req.body)
         if (error) return res.status(400).json(error.message)
 
-        const contato= criarContatoDB({dadosContato: req.body})
-        return res.json(contato)
+        return await criarContatoDB(req.body)
+            .then((contato) => {
+                return res.json(contato)
+            })
+            .catch((err) => {
+                return res.status(400).json(err.message)
+            })
     }
+}
+
+module.exports = {
+    ContactController,
 }

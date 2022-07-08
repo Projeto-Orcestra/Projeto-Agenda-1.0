@@ -1,7 +1,7 @@
-import bc from "bcrypt"
-import { User } from "../models/userModel"
+const bc = require("bcrypt")
+const { User } = require("../models/userModel")
 
-export const criarUserDB = async (dadosUser) => {
+const criarUserDB = async (dadosUser) => {
     const crypted = await bc.hash(dadosUser.senha, 10)
 
     const user = new User({
@@ -21,10 +21,16 @@ export const criarUserDB = async (dadosUser) => {
     return novoUser
 }
 
-export const getUserDB = async (email) => {
+const getUserDB = async (email) => {
     return await User.findOne({ email })
 }
 
-export const getUserById = async (id) => {
+const getUserById = async (id) => {
     return await User.findById(id)
+}
+
+module.exports = {
+    criarUserDB,
+    getUserDB,
+    getUserById,
 }

@@ -1,18 +1,20 @@
-import { Contact } from "../models/contactModel";
+const { Contact } = require("../models/contactModel")
 
-export const criarContatoDB = async (dadosContato) => {
-    const contato = new Contact(
-        dadosContato
-    )
+const criarContatoDB = async (dadosContato) => {
+    const contato = new Contact(dadosContato)
+
     const novoContato = await contato
         .save()
         .then((res) => {
             return res
         })
-        .catch ((err)=> {
+        .catch((err) => {
             throw err
         })
+
     return novoContato
+}
 
-
+module.exports = {
+    criarContatoDB,
 }

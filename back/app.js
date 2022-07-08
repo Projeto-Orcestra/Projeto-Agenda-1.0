@@ -1,9 +1,9 @@
-import express from "express"
-import cors from "cors"
-import mongo from "mongoose"
-import config from "config"
-import { userRoute } from "./routes/userRoute"
-import { contatoRoute } from "./routes/contactRoute"
+const express = require("express")
+const cors = require("cors")
+const mongo = require("mongoose")
+const config = require("config")
+const { userRoute } = require("./routes/userRoute")
+const { contatoRoute } = require("./routes/contactRoute")
 
 mongo
     .connect(config.get("DATABASE_URL"))

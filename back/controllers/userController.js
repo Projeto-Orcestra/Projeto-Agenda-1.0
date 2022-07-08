@@ -1,7 +1,8 @@
-import Joi from "joi"
-import { criarUserDB, getUserDB } from "../services/userService"
+const Joi = require("joi")
+const bc = require("bcrypt")
+const { criarUserDB, getUserDB } = require("../services/userService")
 
-export class UserController {
+class UserController {
     validarUser = (user) => {
         const schema = Joi.object({
             nome: Joi.string().required().min(5),
@@ -16,10 +17,10 @@ export class UserController {
     }
 
     criarUser = async (req, res) => {
-        const { error } = this.validateUser(req.body)
+        const { error } = this.validarUser(req.body)
         if (error) return res.status(400).json(error.message)
 
-        const userExiste = await this.userExists(req.body)
+        const userExiste = await this.userExiste(req.body)
 
         if (userExiste) {
             return res.status(400).json("Usuário já existe")
@@ -53,7 +54,7 @@ export class UserController {
 
         if (!user) throw new Error("Email incorreto")
 
-        const senhaValida = await compare(userInfo.senha, user.senha)
+        const senhaValida = await bc.compare(userInfo.senha, user.senha)
 
         if (!senhaValida) throw new Error("Senha incorreta")
 
@@ -61,7 +62,7 @@ export class UserController {
     }
 
     authUser = async (req, res) => {
-        const { error } = this.validateUserAuth(req.body)
+        const { error } = this.validarUserAuth(req.body)
         if (error) return res.status(400).json(error.message)
 
         return await this.checkUserInfo(req.body)
@@ -73,4 +74,8 @@ export class UserController {
                 return res.status(404).json(err.message)
             })
     }
+}
+
+module.exports = {
+    UserController,
 }
