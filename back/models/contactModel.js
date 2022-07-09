@@ -5,6 +5,7 @@ const contactSchema = new Schema({
     email: { type: String, required: true, unique: true },
     telefone: { type: String, required: true, minlength: 11 },
     foto: { type: String, required: true },
+    userId: { type: String, required: true },
 })
 
 const Contact = model("contatos", contactSchema)
