@@ -23,9 +23,9 @@
     
 }
 
-header{
+.titulo-Principal{
     color: white;
-    font-size: 50px;
+    font-size: 3rem;
     font-weight: bold;
     margin-bottom: 20px;
 }
@@ -65,12 +65,20 @@ header{
     width: 500px;
     height: 500px;
     border-radius: 0 16px 16px 0;
-    background-color: white;
+    border: 1px solid white;
+    border-left: 0px;
+    background-color: rgba(1000, 1000, 1000, 0.5);
     color: black;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+
+.borda-subtitulo-Cadastro{
+    margin-bottom: 25px;
+    font-size: 1rem;
+    font-weight: bold;
 }
 
 .subtitulo {
@@ -81,33 +89,29 @@ header{
 }
 
 .botaoBranco {
-    width: 202px;
-    height: 87px;
-    font-size: 24px;
-    border: solid black 5px;
+    width: 150px;
+    height: 60px;
+    font-size: 1.1rem;
+    border: solid black 3px;
     border-radius: 60px;
+    margin-top: 10px;
+    margin-left: 70px;
+    align-self: flex-start;
 }
 .botaoBranco:hover {
     opacity: .6;
     cursor: pointer;
 }
 
-.email, .senha, .nome{
-    width: 300px;
-    height: 60px;
-    background-color: #CCCCCC;
-    border: none;
-    border-radius: 16px;
-}
-
 .botaoPreto{
-    width: 202px;
-    height: 87px;
-    border: solid white 5px;
+    width: 150px;
+    height: 60px;
+    border: solid white 3px;
     border-radius: 60px;
     color: white;
+    margin-top: 10px;
     background-color: black;
-    font-size: 24px;
+    font-size: 1.1rem;
 }
 
 .botaoPreto:hover {
@@ -115,12 +119,30 @@ header{
     cursor: pointer;
 }
 
-a {
-    color: unset;
-    text-decoration: none;
+.input-Container{
+    position: relative;
+    padding-left: 0;
+    margin-left: 0;
 }
 
-a:hover {
-    text-decoration: underline;
-    cursor: pointer;
+.input-Container > span{
+    position: absolute;
+    border-right: 2px solid gray;
+    padding-right: 5px;
+    top: 21px;
+    left: 20px;
+}
+
+.input-Generico{
+    width: 360px;
+    height: 60px;
+    background-color: white;
+    border: none;
+    margin-bottom: 30px;
+    border-radius: 16px;
+    padding-left: 50px;
+}
+
+.retiraMargem{
+    margin-left: 0;
 }
