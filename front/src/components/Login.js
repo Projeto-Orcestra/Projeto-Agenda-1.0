@@ -31,7 +31,7 @@ export default function Login(props) {
     return (
         <div className="container">
             <header>
-                <h1 className="titulo-Principal"> Agenda </h1>
+                <h1 className="titulo-Principal">Lista de Contatos</h1>
             </header>
             <div className="containerLogin">
                 <div className="box1">
