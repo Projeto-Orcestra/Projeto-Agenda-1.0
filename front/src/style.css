@@ -195,6 +195,7 @@ a {
 .container-formulario {
     padding: 50px;
     text-align: center;
+    position: relative;
 }
 
 .formulario {
@@ -209,8 +210,11 @@ a {
 }
 
 .BsSearch {
+    position: absolute;
     font-size: 1.2rem;
     color: #7E7E7E;
+    top: 65px;
+    left: 200px;
 }
 
 .tabela-contatos-principal {
