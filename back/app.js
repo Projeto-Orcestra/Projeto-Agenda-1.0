@@ -1,18 +1,9 @@
 const express = require("express")
 const cors = require("cors")
-const mongo = require("mongoose")
-const config = require("config")
 const { userRoute } = require("./routes/userRoute")
 const { contatoRoute } = require("./routes/contactRoute")
 
-mongo
-    .connect(config.get("DATABASE_URL"))
-    .then(() => {
-        console.log("Conectado com MongoDB")
-    })
-    .catch((err) => {
-        console.log(err.message)
-    })
+require("./startMongo")()
 
 const app = express()
 
