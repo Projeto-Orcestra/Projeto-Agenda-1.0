@@ -1,6 +1,7 @@
+import { useState } from "react"
 import { criarContato } from "../services/contactService"
 
-export const ContactForm = () => {
+export const ContactForm = (props) => {
     const [contato, setContato] = useState({
         nome: "",
         telefone: "",
@@ -8,10 +9,10 @@ export const ContactForm = () => {
         foto: "",
     })
 
-    handleCreateContact = () => {
+    const handleCreateContact = () => {
         const token = sessionStorage.getItem("token")
         criarContato(token, contato)
     }
 
-    return <div>Contact</div>
+    return <div onClick={props.closeModal}>Contact</div>
 }
