@@ -1,5 +1,7 @@
 import { useState } from "react"
 import { criarContato } from "../services/contactService"
+import {BsFillXCircleFill} from "react-icons/bs"
+import "../style.css"
 
 export const ContactForm = (props) => {
     const [contato, setContato] = useState({
@@ -14,5 +16,10 @@ export const ContactForm = (props) => {
         criarContato(token, contato)
     }
 
-    return <div onClick={props.closeModal}>Contact</div>
+    return <div className="modalContainer" onClick={props.closeModal}>
+                <div className="modalContent"> 
+                    <span className="exitModal"><BsFillXCircleFill/> criar contato</span>
+                    
+                </div>
+        </div>
 }
