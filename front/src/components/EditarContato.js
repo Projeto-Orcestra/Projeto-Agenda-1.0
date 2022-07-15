@@ -10,13 +10,8 @@ import {
 import { AiOutlineUser, AiOutlineMail } from "react-icons/ai"
 import "../style.css"
 
-export const CriarContatoModal = (props) => {
-    const [contato, setContato] = useState({
-        nome: "",
-        email: "",
-        foto: "",
-        telefone: "",
-    })
+export const EditarContatoModal = (props) => {
+    const [contato, setContato] = useState(props.editContato)
 
     const handleInputChange = (e) => {
         const { name, value } = e.target
@@ -24,9 +19,10 @@ export const CriarContatoModal = (props) => {
         setContato(newContato)
     }
 
-    const handleSubmitForm = async () => {
+    const handleSubmitForm = async (e) => {
+        e.preventDefault()
         const token = sessionStorage.getItem("token")
-        await criarContato(token, contato)
+        await editarContato(token, contato)
             .then((res) => {
                 console.log(res)
                 props.closeModal()
@@ -41,9 +37,9 @@ export const CriarContatoModal = (props) => {
                     <span className="exitModal" onClick={props.closeModal}>
                         <BsFillXCircleFill />
                     </span>
-                    Criar contato
+                    Editar Contato
                 </div>
-                <form className="campos">
+                <div className="campos">
                     <div className="input-Container">
                         <span>
                             <AiOutlineUser />
@@ -93,16 +89,15 @@ export const CriarContatoModal = (props) => {
                             placeholder="Telefone"
                             name="telefone"
                             value={contato.telefone}
-                            pattern="([0-9]{2}) [0-9]{5}-[0-9]{4}"
+                            pattern="[0-9]{2} [0-9]{5}-[0-9]{4}"
                             onChange={handleInputChange}></input>
                         <button
-                            type="submit"
                             className="botaoSalvar"
                             onClick={handleSubmitForm}>
                             Salvar
                         </button>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
     )
