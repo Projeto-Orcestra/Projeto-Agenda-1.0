@@ -24,14 +24,17 @@ export const CriarContatoModal = (props) => {
         setContato(newContato)
     }
 
-    const handleSubmitForm = async () => {
+    const handleSubmitForm = async (e) => {
+        e.preventDefault()
         const token = sessionStorage.getItem("token")
         await criarContato(token, contato)
             .then((res) => {
                 console.log(res)
                 props.closeModal()
             })
-            .catch((err) => {})
+            .catch((err) => {
+                console.log(err)
+            })
     }
 
     return (
@@ -93,7 +96,7 @@ export const CriarContatoModal = (props) => {
                             placeholder="Telefone"
                             name="telefone"
                             value={contato.telefone}
-                            pattern="([0-9]{2}) [0-9]{5}-[0-9]{4}"
+                            pattern="[0-9]{2} [0-9]{5}-[0-9]{4}"
                             onChange={handleInputChange}></input>
                         <button
                             type="submit"

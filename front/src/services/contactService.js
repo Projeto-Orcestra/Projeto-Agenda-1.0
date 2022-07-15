@@ -28,11 +28,19 @@ export const criarContato = async (token, contatoData) => {
 
 export const editarContato = async (token, contato) => {
     const url = "/contato/atualizar/" + contato._id
-    console.log(url)
     return await api
-        .put(url, contato, {
-            headers: { "auth-token": token },
-        })
+        .put(
+            url,
+            {
+                nome: contato.nome,
+                email: contato.email,
+                telefone: contato.telefone,
+                foto: contato.foto,
+            },
+            {
+                headers: { "auth-token": token },
+            }
+        )
         .then((res) => {
             return res.data
         })
