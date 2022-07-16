@@ -24,7 +24,7 @@
 
 .titulo-Principal {
     color: white;
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: bold;
     margin-bottom: 20px;
 }
@@ -339,10 +339,10 @@ a {
 .modalContent {
     background-color: white;
     padding: 16px 24px;
-    width: 36.5vw;
-    min-width: 370px;
+    width: 33vw;
+    min-width: 450px;
     height: 78vh;
-    min-height: 250px;
+    min-height: 450px;
     border-radius: 8px;
 }
 .exitModal {
@@ -362,13 +362,20 @@ a {
     cursor: pointer;
 }
 
+.add {
+    display: fixed;
+}
+
 .campos {
     border-radius: 0 16px 16px 0;
     border-left: 0px;
     background-color: rgba(1000, 1000, 1000, 0.5);
     color: black;
     display: flex;
-    justify-content: center;
+    position: relative;
+    position: relative;
+    top: 48%;
+    transform: translateY(-50%);
     align-items: center;
     flex-direction: column;
 }
