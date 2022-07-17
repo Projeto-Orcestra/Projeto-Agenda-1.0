@@ -31,5 +31,9 @@ Primero abra dois terminais um para o front e outro para o backend em seguida re
 - Passo 4 ``` cd back ```<br/>
 - Passo 5 ``` npm i ```<br/>
 - Passo 6 ``` npm run dev ```<br/>
+
+
+Após realizar esses passos será aberto no navegador a aplicação, não feche os terminais,pois eles estarão rodando sua aplicação.
+Caso queira encerrar a aplicação realize os seguintes passos nos dois terminais ``` Ctrl + c ``` ou ``` Ctrl + d ```. 
 ___
 <h4 align="center"> Desenvolvido por Orion 2022 </h4>
