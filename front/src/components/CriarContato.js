@@ -1,12 +1,6 @@
 import { useState } from "react"
-import { criarContato, editarContato } from "../services/contactService"
-import {
-    BsFillXCircleFill,
-    BsFillPersonFill,
-    BsFillKeyFill,
-    BsTelephoneFill,
-    BsPerson,
-} from "react-icons/bs"
+import { criarContato } from "../services/contactService"
+import { BsFillXCircleFill, BsTelephoneFill } from "react-icons/bs"
 import { AiOutlineUser, AiOutlineMail } from "react-icons/ai"
 import "../style.css"
 
@@ -29,8 +23,8 @@ export const CriarContatoModal = (props) => {
         const token = sessionStorage.getItem("token")
         await criarContato(token, contato)
             .then((res) => {
-                console.log(res)
                 props.closeModal()
+                window.location.reload()
             })
             .catch((err) => {
                 console.log(err)

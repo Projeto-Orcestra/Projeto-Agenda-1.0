@@ -1,5 +1,5 @@
-import React, { useState } from "react"
-import Login from "../components/Login"
+import { useState } from "react"
+import { Login } from "../components/Login"
 import { Cadastro } from "../components/Cadastro"
 
 export default function LoginCadastro() {

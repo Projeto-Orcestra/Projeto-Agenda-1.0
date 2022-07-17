@@ -48,3 +48,16 @@ export const editarContato = async (token, contato) => {
             throw err
         })
 }
+
+export const excluirContato = async (token, contatoId) => {
+    return await api
+        .delete(`/contato/deletar/${contatoId}`, {
+            headers: { "auth-token": token },
+        })
+        .then((res) => {
+            return res.data
+        })
+        .catch((err) => {
+            throw err
+        })
+}

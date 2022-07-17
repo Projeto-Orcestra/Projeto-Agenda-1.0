@@ -1,11 +1,12 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { authUser } from "../services/authUser"
-import { AiOutlineUser, AiOutlineMail } from "react-icons/ai"
+import { authUser } from "../services/userService"
+import { AiOutlineMail } from "react-icons/ai"
 import { BsFillKeyFill } from "react-icons/bs"
+
 import "../style.css"
 
-export default function Login(props) {
+export function Login(props) {
     const [user, setUser] = useState({ email: "", senha: "" })
     const navigate = useNavigate()
 

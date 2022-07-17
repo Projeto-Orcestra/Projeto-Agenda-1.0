@@ -1,13 +1,8 @@
 import { useState } from "react"
-import { criarContato, editarContato } from "../services/contactService"
-import {
-    BsFillXCircleFill,
-    BsFillPersonFill,
-    BsFillKeyFill,
-    BsTelephoneFill,
-    BsPerson,
-} from "react-icons/bs"
+import { editarContato } from "../services/contactService"
+import { BsFillXCircleFill, BsTelephoneFill } from "react-icons/bs"
 import { AiOutlineUser, AiOutlineMail } from "react-icons/ai"
+
 import "../style.css"
 
 export const EditarContatoModal = (props) => {
@@ -24,8 +19,8 @@ export const EditarContatoModal = (props) => {
         const token = sessionStorage.getItem("token")
         await editarContato(token, contato)
             .then((res) => {
-                console.log(res)
                 props.closeModal()
+                window.location.reload()
             })
             .catch((err) => {})
     }
@@ -86,7 +81,7 @@ export const EditarContatoModal = (props) => {
                         <input
                             className="inputAdicionar "
                             type="tel"
-                            placeholder="Telefone"
+                            placeholder="00 00000-0000"
                             name="telefone"
                             value={contato.telefone}
                             pattern="[0-9]{2} [0-9]{5}-[0-9]{4}"

@@ -1,9 +1,9 @@
-import React, { useState } from "react"
+import { useState } from "react"
 import { AiOutlineUser, AiOutlineMail } from "react-icons/ai"
 import { BsFillKeyFill } from "react-icons/bs"
 import { useNavigate } from "react-router-dom"
-import { authUser } from "../services/authUser"
-import { registrarUser } from "../services/registrarUser"
+import { registrarUser, authUser } from "../services/userService"
+
 import "../style.css"
 
 export function Cadastro(props) {

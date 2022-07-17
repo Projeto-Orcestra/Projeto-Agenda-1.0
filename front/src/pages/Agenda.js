@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react"
-import { getContatos } from "../services/contactService"
+import { useEffect, useState } from "react"
 import {
     BsBoxArrowRight,
     BsPersonPlus,
@@ -8,10 +7,11 @@ import {
     BsFillTrashFill,
     BsSearch,
 } from "react-icons/bs"
+import { excluirContato, getContatos } from "../services/contactService"
+import { CriarContatoModal } from "../components/CriarContato"
+import { EditarContatoModal } from "../components/EditarContato"
 
 import "../style.css"
-import { ContactForm, CriarContatoModal } from "../components/ContactForm"
-import { EditarContatoModal } from "../components/EditarContato"
 
 export function Agenda() {
     const [contatos, setContatos] = useState([])
@@ -34,9 +34,21 @@ export function Agenda() {
         setPesquisa(e.currentTarget.value)
     }
 
-    const handleEdit = (contato) => {
+    const handleContactEdit = (contato) => {
         setEditContato(contato)
         setIsEditarVisible(true)
+    }
+
+    const handleContactDelete = async (contatoId) => {
+        const token = sessionStorage.getItem("token")
+        await excluirContato(token, contatoId)
+            .then((res) => {
+                console.log(res)
+                window.location.reload()
+            })
+            .catch((err) => {
+                console.log(err)
+            })
     }
 
     const contatosFiltrados = pesquisa
@@ -110,15 +122,26 @@ export function Agenda() {
                                                 </div>
                                             </td>
                                             <td>{contato.nome}</td>
-                                            <td>{contato.telefone}</td>
+                                            <td>{`(${contato.telefone.slice(
+                                                -contato.telefone.length,
+                                                2
+                                            )}) ${contato.telefone.slice(
+                                                2
+                                            )}`}</td>
                                             <td
                                                 className="icone"
                                                 onClick={() =>
-                                                    handleEdit(contato)
+                                                    handleContactEdit(contato)
                                                 }>
                                                 <BsPencilSquare />
                                             </td>
-                                            <td className="icone vermelho">
+                                            <td
+                                                className="icone vermelho"
+                                                onClick={() =>
+                                                    handleContactDelete(
+                                                        contato._id
+                                                    )
+                                                }>
                                                 <BsFillTrashFill />
                                             </td>
                                         </tr>
