@@ -1,4 +1,4 @@
-# Projeto Agenda
+# Projeto Orion
 
 <h1 align="center"><img width="300" heigth="300" src="/documents/logo.png" alt="Logotipo"/></h1>
 
@@ -21,15 +21,15 @@ Primero abra dois terminais um para o front e outro para o backend em seguida re
 ### Frontend
 1° terminal
 
-``` cd front ```<br/>
-``` npm i ```<br/>
-``` npm start ```<br/>
+- Passo 1  ``` cd front ```<br/>
+- Passo 2  ``` npm i ```<br/>
+- Passo 3  ``` npm start ```<br/>
 
 ### Backend
 2° terminal
 
-``` cd back ```<br/>
-``` npm i ```<br/>
-``` npm run dev ```<br/>
+- Passo 4 ``` cd back ```<br/>
+- Passo 5 ``` npm i ```<br/>
+- Passo 6 ``` npm run dev ```<br/>
 ___
-<h4 align="center"> Desenvolvido por Grupo Orion 2022 </h4>
+<h4 align="center"> Desenvolvido por Orion 2022 </h4>
