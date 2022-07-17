@@ -1,7 +1,6 @@
-# Projeto-Agenda-1.0
+# Projeto Agenda
 
 <h1 align="center"><img width="300" heigth="300" src="/documents/logo.png" alt="Logotipo"/></h1>
-___
 
 ## Integrantes do Grupo
 
@@ -22,15 +21,15 @@ Primero abra dois terminais um para o front e outro para o backend em seguida re
 ### Frontend
 1° terminal
 
-``` cd front ```
-``` npm i ```
-``` npm start ```
+``` cd front ```<br/>
+``` npm i ```<br/>
+``` npm start ```<br/>
 
 ### Backend
 2° terminal
 
-``` cd back ```
-``` npm i ```
-``` npm run dev ```
+``` cd back ```<br/>
+``` npm i ```<br/>
+``` npm run dev ```<br/>
 ___
-<h4 align="center"> Desenvolvidor por Grupo Orion 2022 </h4>
+<h4 align="center"> Desenvolvido por Grupo Orion 2022 </h4>
