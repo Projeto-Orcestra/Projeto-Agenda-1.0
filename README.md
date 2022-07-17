@@ -34,6 +34,7 @@ Primero abra dois terminais um para o front e outro para o backend em seguida re
 
 
 Após realizar esses passos será aberto no navegador a aplicação, não feche os terminais,pois eles estarão rodando sua aplicação.
-Caso queira encerrar a aplicação realize os seguintes passos nos dois terminais: <br/> ``` Ctrl + c ``` ou ``` Ctrl + d ```. 
+Caso queira encerrar a aplicação realize os seguintes passos nos dois terminais: <br/>
+Passo 1 - ``` Ctrl + c ``` ou ``` Ctrl + d ```. 
 ___
 <h4 align="center"> Desenvolvido por Orion 2022 </h4>
