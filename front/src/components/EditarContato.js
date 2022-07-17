@@ -2,11 +2,27 @@ import { useState } from "react"
 import { editarContato } from "../services/contactService"
 import { BsFillXCircleFill, BsTelephoneFill } from "react-icons/bs"
 import { AiOutlineUser, AiOutlineMail } from "react-icons/ai"
-
-import "../style.css"
+import Joi from "joi"
+import Alert from "@mui/material/Alert"
+import IconButton from "@mui/material/IconButton"
+import CloseIcon from "@mui/icons-material/Close"
 
 export const EditarContatoModal = (props) => {
+    const contatoSchema = Joi.object({
+        _id: Joi.string(),
+        userId: Joi.string(),
+        __v: Joi.number(),
+        nome: Joi.string().required(),
+        email: Joi.string()
+            .email({ tlds: { allow: false } })
+            .required(),
+        foto: Joi.string().empty(""),
+        telefone: Joi.string().length(13),
+    })
+
     const [contato, setContato] = useState(props.editContato)
+    const [isErrorAlertVisible, setIsErrorAlertVisible] = useState(false)
+    const [errorMsg, setErrorMsg] = useState()
 
     const handleInputChange = (e) => {
         const { name, value } = e.target
@@ -17,16 +33,39 @@ export const EditarContatoModal = (props) => {
     const handleSubmitForm = async (e) => {
         e.preventDefault()
         const token = sessionStorage.getItem("token")
-        await editarContato(token, contato)
-            .then((res) => {
-                props.closeModal()
-                window.location.reload()
-            })
-            .catch((err) => {})
+        try {
+            await contatoSchema.validateAsync(contato)
+            await editarContato(token, contato)
+            props.closeModal()
+            window.location.reload()
+        } catch (err) {
+            err.response
+                ? setErrorMsg(err.response.data)
+                : setErrorMsg(err.message)
+            setIsErrorAlertVisible(true)
+        }
     }
 
     return (
         <div className="modalContainer">
+            {isErrorAlertVisible ? (
+                <Alert
+                    variant="filled"
+                    severity="error"
+                    action={
+                        <IconButton
+                            aria-label="close"
+                            color="inherit"
+                            size="small"
+                            onClick={() => {
+                                setIsErrorAlertVisible(false)
+                            }}>
+                            <CloseIcon fontSize="inherit" />
+                        </IconButton>
+                    }>
+                    {errorMsg}
+                </Alert>
+            ) : null}
             <div className="modalContent">
                 <div className="add">
                     <span className="exitModal" onClick={props.closeModal}>

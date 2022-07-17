@@ -270,7 +270,7 @@ a {
 
 .tabela-contatos tbody tr {
     height: 74px;
-
+    background-color: white;
     font-weight: 400;
 }
 
@@ -331,8 +331,10 @@ a {
     width: 100%;
     height: 100%;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 20px;
     background-color: rgba(0, 0, 0, 0.5);
 }
 
@@ -373,7 +375,6 @@ a {
     color: black;
     display: flex;
     position: relative;
-    position: relative;
     top: 48%;
     transform: translateY(-50%);
     align-items: center;
@@ -410,4 +411,49 @@ a {
 
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
+}
+
+.modalErro {
+    background-color: white;
+    width: 300px;
+    border-radius: 8px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+.botoes {
+    display: flex;
+    justify-content: center;
+}
+
+.botoes > button {
+    width: 50vw;
+    height: 50px;
+    border: 0;
+    font-size: 1.14rem;
+    font-weight: bold;
+}
+
+.botoes > button:nth-child(1) {
+    background-color: white;
+    border-top: 1px solid gray;
+}
+
+.botoes > button:nth-child(2) {
+    background-color: black;
+    color: white;
+}
+
+.botoes > button:hover {
+    opacity: 0.6;
+}
+
+.modalErro > span {
+    padding: 25px;
+    font-size: 1.25rem;
+    font-weight: bold;
 }

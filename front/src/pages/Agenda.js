@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { Navigate, useNavigate } from "react-router-dom"
 import {
     BsBoxArrowRight,
     BsPersonPlus,
@@ -7,11 +8,10 @@ import {
     BsFillTrashFill,
     BsSearch,
 } from "react-icons/bs"
-import { excluirContato, getContatos } from "../services/contactService"
+import { getContatos } from "../services/contactService"
 import { CriarContatoModal } from "../components/CriarContato"
 import { EditarContatoModal } from "../components/EditarContato"
-
-import "../style.css"
+import { DeletarContatoModal } from "../components/DeletarContato"
 
 export function Agenda() {
     const [contatos, setContatos] = useState([])
@@ -19,6 +19,9 @@ export function Agenda() {
     const [isCriarVisible, setIsCriarVisible] = useState(false)
     const [isEditarVisible, setIsEditarVisible] = useState(false)
     const [editContato, setEditContato] = useState()
+    const [isConfirmDeleteVisible, setIsConfirmDeleteVisible] = useState(false)
+    const [deleteContatoId, setDeleteContatoId] = useState()
+    const navigate = useNavigate()
 
     useEffect(() => {
         const reqContatos = async () => {
@@ -39,16 +42,14 @@ export function Agenda() {
         setIsEditarVisible(true)
     }
 
-    const handleContactDelete = async (contatoId) => {
-        const token = sessionStorage.getItem("token")
-        await excluirContato(token, contatoId)
-            .then((res) => {
-                console.log(res)
-                window.location.reload()
-            })
-            .catch((err) => {
-                console.log(err)
-            })
+    const handleContactDelete = (contatoId) => {
+        setDeleteContatoId(contatoId)
+        setIsConfirmDeleteVisible(true)
+    }
+
+    const handleLogout = () => {
+        sessionStorage.clear()
+        navigate("/default")
     }
 
     const contatosFiltrados = pesquisa
@@ -58,6 +59,9 @@ export function Agenda() {
                   .startsWith(pesquisa.toLowerCase())
           })
         : contatos
+
+    if (!sessionStorage.getItem("token"))
+        return <Navigate to="/default" replace />
 
     return (
         <div>
@@ -72,10 +76,18 @@ export function Agenda() {
                     editContato={editContato}
                 />
             ) : null}
+            {isConfirmDeleteVisible ? (
+                <DeletarContatoModal
+                    contatoId={deleteContatoId}
+                    closeModal={() => setIsConfirmDeleteVisible(false)}
+                />
+            ) : null}
             <menu>
                 <span className="titulo">Contatos</span>
                 <div className="logout">
-                    <button className="botaoSair">Desconectar</button>
+                    <button className="botaoSair" onClick={handleLogout}>
+                        Desconectar
+                    </button>
                     <span className="BsBoxArrowRight">
                         <BsBoxArrowRight />
                     </span>
@@ -112,13 +124,15 @@ export function Agenda() {
                                         <tr key={contato._id}>
                                             <td className="apareca-700">
                                                 <div className="container-imagem-principal">
-                                                    <img
-                                                        className="container-imagem-modal"
-                                                        src={contato.foto}
-                                                        alt={
-                                                            <BsFillPersonFill />
-                                                        }
-                                                    />
+                                                    {contato.foto ? (
+                                                        <img
+                                                            className="container-imagem-modal"
+                                                            src={contato.foto}
+                                                            alt="Foto Contato"
+                                                        />
+                                                    ) : (
+                                                        <BsFillPersonFill className="container-imagem-modal" />
+                                                    )}
                                                 </div>
                                             </td>
                                             <td>{contato.nome}</td>

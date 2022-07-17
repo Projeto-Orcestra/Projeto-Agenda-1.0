@@ -14,8 +14,11 @@ export const getContatos = async (token) => {
 }
 
 export const criarContato = async (token, contatoData) => {
+    const { nome, email, telefone } = contatoData
+    const contato = contatoData.foto ? contatoData : { nome, email, telefone }
+
     return await api
-        .post("/contato/criar", contatoData, {
+        .post("/contato/criar", contato, {
             headers: { "auth-token": token },
         })
         .then((res) => {

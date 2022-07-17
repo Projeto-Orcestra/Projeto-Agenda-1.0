@@ -2,15 +2,29 @@ import { useState } from "react"
 import { criarContato } from "../services/contactService"
 import { BsFillXCircleFill, BsTelephoneFill } from "react-icons/bs"
 import { AiOutlineUser, AiOutlineMail } from "react-icons/ai"
-import "../style.css"
+import Joi from "joi"
+import Alert from "@mui/material/Alert"
+import IconButton from "@mui/material/IconButton"
+import CloseIcon from "@mui/icons-material/Close"
 
 export const CriarContatoModal = (props) => {
+    const contatoSchema = Joi.object({
+        nome: Joi.string().required(),
+        email: Joi.string()
+            .email({ tlds: { allow: false } })
+            .required(),
+        foto: Joi.string().empty(""),
+        telefone: Joi.string().length(13),
+    })
+
     const [contato, setContato] = useState({
         nome: "",
         email: "",
         foto: "",
         telefone: "",
     })
+    const [isErrorAlertVisible, setIsErrorAlertVisible] = useState(false)
+    const [errorMsg, setErrorMsg] = useState()
 
     const handleInputChange = (e) => {
         const { name, value } = e.target
@@ -21,18 +35,39 @@ export const CriarContatoModal = (props) => {
     const handleSubmitForm = async (e) => {
         e.preventDefault()
         const token = sessionStorage.getItem("token")
-        await criarContato(token, contato)
-            .then((res) => {
-                props.closeModal()
-                window.location.reload()
-            })
-            .catch((err) => {
-                console.log(err)
-            })
+        try {
+            await contatoSchema.validateAsync(contato)
+            await criarContato(token, contato)
+            props.closeModal()
+            window.location.reload()
+        } catch (err) {
+            err.response
+                ? setErrorMsg(err.response.data)
+                : setErrorMsg(err.message)
+            setIsErrorAlertVisible(true)
+        }
     }
 
     return (
         <div className="modalContainer">
+            {isErrorAlertVisible ? (
+                <Alert
+                    variant="filled"
+                    severity="error"
+                    action={
+                        <IconButton
+                            aria-label="close"
+                            color="inherit"
+                            size="small"
+                            onClick={() => {
+                                setIsErrorAlertVisible(false)
+                            }}>
+                            <CloseIcon fontSize="inherit" />
+                        </IconButton>
+                    }>
+                    {errorMsg}
+                </Alert>
+            ) : null}
             <div className="modalContent">
                 <div className="add">
                     <span className="exitModal" onClick={props.closeModal}>
@@ -87,7 +122,7 @@ export const CriarContatoModal = (props) => {
                         <input
                             className="inputAdicionar "
                             type="tel"
-                            placeholder="Telefone"
+                            placeholder="00 00000-0000"
                             name="telefone"
                             value={contato.telefone}
                             pattern="[0-9]{2} [0-9]{5}-[0-9]{4}"
