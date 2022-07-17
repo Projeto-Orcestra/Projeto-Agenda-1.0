@@ -14,7 +14,6 @@ class ContactController {
             email: Joi.string().email().required(),
             telefone: Joi.string().required().min(11),
             foto: Joi.string().optional(),
-            userId: Joi.string().required(),
         })
         return schema.validate(contato)
     }

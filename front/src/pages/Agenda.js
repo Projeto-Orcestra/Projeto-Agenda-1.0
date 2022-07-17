@@ -49,7 +49,7 @@ export function Agenda() {
 
     const handleLogout = () => {
         sessionStorage.clear()
-        navigate("/default")
+        navigate("/")
     }
 
     const contatosFiltrados = pesquisa

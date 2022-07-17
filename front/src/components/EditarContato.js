@@ -8,7 +8,7 @@ import IconButton from "@mui/material/IconButton"
 import CloseIcon from "@mui/icons-material/Close"
 
 export const EditarContatoModal = (props) => {
-    const contatoSchema = Joi.object({
+    const editarContatoSchema = Joi.object({
         _id: Joi.string(),
         userId: Joi.string(),
         __v: Joi.number(),
@@ -34,7 +34,7 @@ export const EditarContatoModal = (props) => {
         e.preventDefault()
         const token = sessionStorage.getItem("token")
         try {
-            await contatoSchema.validateAsync(contato)
+            await editarContatoSchema.validateAsync(contato)
             await editarContato(token, contato)
             props.closeModal()
             window.location.reload()
