@@ -10,6 +10,10 @@
 - [Leandro Souza](https://github.com/Leanddro13)
 - [Mariana Fonseca](https://github.com/Mari23Fonseca)
 
+## Utilização
+
+Confira nosso projeto rodando aqui [Projeto](https://projeto-agenda-orion-nd4o90xer-carlos-e-souza.vercel.app/) ou utilize na sua máquina com as instruções a seguir.
+
 ## Pré-Requisitos
 
 Para utilizar a aplicação é necessário ter instalado o [Nodejs](https://nodejs.org/en/) versão ``` ^16.0.0``` ou superior, [MongoDB](https://www.mongodb.com/try/download/community) versão ``` ^4.0.0```.
